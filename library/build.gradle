@@ -4,6 +4,10 @@ apply from: '../build-config/gradle-quality.gradle'
 
 archivesBaseName = 'android-job'
 
+configurations.all {
+    resolutionStrategy.force "android.arch.core:common:1.1.0"
+}
+
 dependencies {
     compileOnly "com.google.android.gms:play-services-gcm:$playServicesVersion"
     compileOnly "android.arch.work:work-runtime:$workVersion"
@@ -34,7 +38,7 @@ android {
 
     resourcePrefix 'job_'
 
-    useLibrary 'android.test.mock'
+    //useLibrary 'android.test.mock'
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion

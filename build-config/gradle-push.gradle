@@ -12,26 +12,26 @@ def isLocal() {
 
 def getReleaseRepositoryUrl() {
     if (this.isLocal()) {
-        return hasProperty('RELEASE_REPOSITORY_LOCAL') ? RELEASE_REPOSITORY_LOCAL : "file://${System.env.HOME}/.m2/repository"
+        return hasProperty('RELEASE_REPOSITORY_LOCAL') ? RELEASE_REPOSITORY_LOCAL : "https://foursquare.artifactoryonline.com/foursquare/libs-public"
     } else {
-        return hasProperty('RELEASE_REPOSITORY_URL') ? RELEASE_REPOSITORY_URL : "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+        return hasProperty('RELEASE_REPOSITORY_URL') ? RELEASE_REPOSITORY_URL : "https://foursquare.artifactoryonline.com/foursquare/libs-public"
     }
 }
 
 def getSnapshotRepositoryUrl() {
     if (this.isLocal()) {
-        return hasProperty('SNAPSHOT_REPOSITORY_LOCAL') ? SNAPSHOT_REPOSITORY_LOCAL : "file://${System.env.HOME}/.m2/repository"
+        return hasProperty('SNAPSHOT_REPOSITORY_LOCAL') ? SNAPSHOT_REPOSITORY_LOCAL : "https://foursquare.artifactoryonline.com/foursquare/libs-public"
     } else {
-        return hasProperty('SNAPSHOT_REPOSITORY_URL') ? SNAPSHOT_REPOSITORY_URL : "https://oss.sonatype.org/content/repositories/snapshots/"
+        return hasProperty('SNAPSHOT_REPOSITORY_URL') ? SNAPSHOT_REPOSITORY_URL : "https://foursquare.artifactoryonline.com/foursquare/libs-public"
     }
 }
 
 def getRepositoryUsername() {
-    return hasProperty('SONATYPE_USERNAME') ? SONATYPE_USERNAME : ""
+    return hasProperty('ARTIFACTORY_USERNAME') ? ARTIFACTORY_USERNAME : ""
 }
 
 def getRepositoryPassword() {
-    return hasProperty('SONATYPE_PASSWORD') ? SONATYPE_PASSWORD : ""
+    return hasProperty('ARTIFACTORY_PASSWORD') ? ARTIFACTORY_PASSWORD : ""
 }
 
 android.libraryVariants.all { variant ->

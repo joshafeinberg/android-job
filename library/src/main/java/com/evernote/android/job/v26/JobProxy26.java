@@ -67,8 +67,8 @@ public class JobProxy26 extends JobProxy24 {
     protected int convertNetworkType(@NonNull JobRequest.NetworkType networkType) {
         switch (networkType) {
             case METERED:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    return JobInfo.NETWORK_TYPE_CELLULAR;
+                if (Build.VERSION.SDK_INT >= 29) {
+                    return 4;
                 } else {
                     return JobInfo.NETWORK_TYPE_METERED;
                 }

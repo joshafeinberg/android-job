@@ -15,6 +15,7 @@
  */
 package com.evernote.android.job.util;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -116,15 +117,16 @@ public final class Device {
         }
     }
 
+    @SuppressLint("WrongConstant")
     @SuppressWarnings("deprecation")
     private static boolean isRoaming(ConnectivityManager connectivityManager, NetworkInfo networkInfo) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+        if (Build.VERSION.SDK_INT < 29) {
             return networkInfo.isRoaming();
         }
 
         try {
             NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
-            return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_ROAMING);
+            return capabilities.hasCapability(18);
         } catch (Exception e) {
             return networkInfo.isRoaming();
         }
